@@ -12,6 +12,8 @@ var userName = "john";
 var userNameLast = "Brow";
 var age = "26";
 var height = 178;
+var isHuman = true;
+
 /*
 // *** String functions ***
 */
@@ -19,43 +21,105 @@ var firstName = 'BlahBlahBalh';
 var lastname = 'lololol';
 console.log(firstName.length); // 12
 console.log(firstName.concat(lastname)); //BlahBlahBalhlololol
-console.log(firstName.split);
+console.log(firstName.indexOf('h')) // returns 3, also  Returns -1 if not found
+console.log(firstName.indexOf('h', 5)) // Starts to look for h after 5 char
+console.log(firstName.search('h')) // returns 3 but same as index of but cannot take in regex
+console.log(firstName.slice(7, 9)); // Gets 7,8 char, also look for -9 to -7 will get the same results
+console.log(firstName.slice(7)); // everything after 7
+console.log(firstName.substring(10, 12)); // cannot accept negative indexes when using two parameter. except that same as slice
+console.log(firstName.replace('a', 'n')); // Only replaces first instance
+console.log(firstName.replace(/a/gi, 'n')); // Replaces all instances of a on the string and looks for case insensitive value
+console.log(firstName.trim()); // removes white space at the end
+console.log(firstName.split("")); // Splits the string into an array, var x = firstname.split("")
 
+/*
+// * Number methods/ Function 
+*/
+
+console.log(height.toString()); // returns value in string 
+// Number() method always returns a number from its argument
+Number(true);          // returns 1
+Number(false);         // returns 0
+Number("10");          // returns 10 
 
 /*
 //  *** type coercion ***
-// Can convert the type and compare in Js
+// JavaScript is a weakly-typed language, values can also be converted between different types automatically
+// It usually happens when you apply operators to values of different types - 2/’5'
+// 	One operator that does not trigger implicit type coercion is ===, which is called the strict equality operator.
+// The loose equality operator == on the other hand does both comparison and type coercion if needed.
+// 
 */
-if(age === 26) {
-	console.log("26 age");
-}else {
-	console.log("Else");
+// Example of implicit type coercion.
+true + false; // returns 0+1 = 1
+"number" + 15 + 3 // "number153"
+15 + 3 + "number" // "18number"
+
+// To avoild this always use strict equality operator
+if (age === 26) { // Fails and else is executed 
+	console.log("26 is a number");
+} else {
+	console.log("26 is a string"); // This is displayed
+}
+
+/*
+* The Ternary Operator and Switch Statements
+*/
+age >= 18 ? console.log(firstName + ' drinks beer.') : console.log(firstName + ' drinks juice.');
+
+var job = 'instructor';
+switch (job) {
+	case 'teacher': // Have condition statement here and if success does the switch 
+	case 'instructor':
+		console.log(firstName + ' teaches kids how to code.');
+		break;
+	case 'driver':
+		console.log(firstName + ' drives an uber in London.');
+		break;
+	case 'designer':
+		console.log(firstName + ' designs beautiful websites.');
+		break;
+	default:
+		console.log(firstName + ' does something else.');
 }
 
 
 /*
-// Arrays
-// creation
+* Truthy and Falsy values
+// falsy values: undefined, null, 0, '', NaN
+// truthy values: NOT falsy values 
 */
-var students = [ 'John', 'gil', 'gaia'] ;
-var ages = [10,20,30];
-var years= new Array(1999, 2001, 2002);
+
+var height;
+if (height) {
+	console.log("Not defined")
+} else {
+	console.log("defined")
+}
+
+/*
+// Arrays
+// 
+*/
+var students = ['John', 'gil', 'gaia'];
+var ages = [10, 20, 30];
+var years = new Array(1999, 2001, 2002);
 // array functions
 // push, pop, shift, unshift, indexof
 
 
 // Loops
-for (var i=0;i < ages.length ; i++ ) {
+for (var i = 0; i < ages.length; i++) {
 	console.log(ages[i]);
-	if(i === 2) {
+	if (i === 2) {
 		break;
-	}else{
+	} else {
 		continue;
 	}
 }
 
-while( i < students.length ) {
-	  i++
+while (i < students.length) {
+	i++
 	console.log(i);
 }
 
@@ -66,7 +130,7 @@ while( i < students.length ) {
  Function Declarations feel like they were intended to mimic Java style method declarations but Java methods are very different animals. In JavaScript functions are living objects with values. Java methods are just metadata storage to larger extent. 
 */
 function calculaterAge(yearOfBirth) {
-	var age=2017-yearOfBirth
+	var age = 2017 - yearOfBirth
 	return age;
 }
 
@@ -77,15 +141,15 @@ HOISTING
 Function declarations and function variables are always moved (‘hoisted’) to the top of their JavaScript scope by the JavaScript interpreter
 
 */
-function yearsToRetire(name, yearOfBirth ){
-	var age=calculaterAge(yearOfBirth);
-	var yearsLeft=65-age;
-	if(yearsLeft > 0) {
-		return (name+' has '+ yearsLeft +' to retire');
+function yearsToRetire(name, yearOfBirth) {
+	var age = calculaterAge(yearOfBirth);
+	var yearsLeft = 65 - age;
+	if (yearsLeft > 0) {
+		return (name + ' has ' + yearsLeft + ' to retire');
 	} else {
 		return (name + " Has already retired");
 	}
-	
+
 }
 
 console.log(calculaterAge(1999));
@@ -121,7 +185,7 @@ var george = {
 	lastName: 'Goldman',
 	age: 35,
 	occupation: 'manager',
-	isMarried: true	
+	isMarried: true
 };
 // Reading values part of the object
 // 1. Dot Notation: Object.key
@@ -131,16 +195,16 @@ console.log(george.age);
 console.log(george['isMarried']);
 // Object values can be updated / Data Mutation
 // 2 ways as we read data from it
-george.lastName='miller';
-george['occupation']='CTO';
-console.log(george);	
+george.lastName = 'miller';
+george['occupation'] = 'CTO';
+console.log(george);
 
 
 // 2. Creating object with object keyword
 var mitch = new Object();
-mitch.firstName='Mitch';
-mitch.lastName='Brand';
-mitch['age']=65;
+mitch.firstName = 'Mitch';
+mitch.lastName = 'Brand';
+mitch['age'] = 65;
 console.log(mitch);
 
 // The data that the object holds can be anything, from numbers, string, array, functions and even objects
@@ -151,12 +215,12 @@ var john = {
 	yearOfBirth: 1980,
 	occupation: 'developer',
 	isMarried: true,
-	familyMembers: ['gil','gid'],
-	run: function(){
+	familyMembers: ['gil', 'gid'],
+	run: function () {
 		console.log("JOHNS RUNNING");
 	},
-	calculateAge: function() {
-		this.age=2017 - this.yearOfBirth;
+	calculateAge: function () {
+		this.age = 2017 - this.yearOfBirth;
 	}
 };
 
@@ -204,14 +268,14 @@ EXECUTION CONTEXT n EXECUTION STACK:
 */
 
 // HOISTING EXAMPLE
-console.log(addition(2,3)); // this will be run as the function is hoisted and the declartion are in global execution object
+console.log(addition(2, 3)); // this will be run as the function is hoisted and the declartion are in global execution object
 function addition(a, b) {
-	return (a+b);
+	return (a + b);
 }
 
 //console.log(sub(1,3)); // Uncaught TypeError: sub is not a function
-var sub = function ( a,  b) {
-	return (a-b);
+var sub = function (a, b) {
+	return (a - b);
 }
 
 
@@ -238,11 +302,11 @@ var sub = function ( a,  b) {
 *
 */
 // Updates the text with html styling, sET HTML
-document.querySelector("#name-0").innerHTML = '<em>'+ "GURU" +'</em>';
+document.querySelector("#name-0").innerHTML = '<em>' + "GURU" + '</em>';
 // Updating the text on the html element, SET TEXT
 document.querySelector("#score-0").textContent = 200;
 // Getting value from DOM	
-var name=document.querySelector("#name-0").textContent;
+var name = document.querySelector("#name-0").textContent;
 console.log(name);
 // WE can also manipulate the CCS styling of the page
-document.querySelector('#score-0').style.color='red';
+document.querySelector('#score-0').style.color = 'red';
