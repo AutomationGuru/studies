@@ -2,17 +2,37 @@
 ES5 is supported on all browser 
 ES6/ ES2015 - not yet supported by all browsers
 ES2016 - not many different than ES2015
-This study is on ES5 
+This study is on ES5/ES6
 */
 
 /*
 // *** Variables ***
+// Variables declared with the var keyword can not have Block Scope.
+// Variables declared with the let keyword can have Block Scope. - meaning Variables with let cannot be used outside
+// Variables defined with let are not hoisted to the top.
 */
+// ES5
 var userName = "john";
 var userNameLast = "Brow";
 var age = "26";
 var height = 178;
 var isHuman = true;
+var i = 5;
+for (var i = 0; i < 10; i++) {
+	// some statements
+}// Here i is 10
+
+// ES6
+let userName2 = "john";
+let userNameLast2 = "Brow";
+let age2 = "26";
+const height2 = 178;
+let isHuman2 = true;
+let i = 5;
+for (let i = 0; i < 10; i++) {
+	// some statements
+} // Here i is 5
+
 
 /*
 // *** String functions ***
@@ -97,6 +117,38 @@ if (height) {
 	console.log("defined")
 }
 
+
+// Loops
+// For loop
+var ages = [10, 20, 30];
+
+for (let i = 0; i < ages.length; i++) {
+	console.log(ages[i]);
+	if (i === 2) {
+		break;
+	} else {
+		continue;
+	}
+}
+for (let eachAge of ages) {
+	console.log(eachAge)
+}
+
+//for...in - this is for Looping over objects and not arrays
+// A for...in loop iterates over the properties of an object in an arbitrary order 
+var finalValue = "";
+var exampleObject = { a: 1, b: 2, c: 3 };
+
+for (var property in exampleObject) {
+	finalValue += exampleObject[property];
+}
+console.log(finalValue); // 123
+// While loop
+while (i < students.length) {
+	i++
+	console.log(i);
+}
+
 /*
 // Arrays
 // 
@@ -106,24 +158,26 @@ var ages = [10, 20, 30];
 var years = new Array(1999, 2001, 2002);
 // array functions
 // push, pop, shift, unshift, indexof
+students.push('Gaida'); // adds a new element 
+// or with the length of the array add a new element
+students[students.length] = 'Gaida';
+var poppedElement = students.pop();
+students.shift(); // Removes the first element and returns that to a var
+students.push('Gaida'); // adds a new element 
+ages.join("");// returns a string 102030
+students.sort(); // Sort it alphabetically for arrays of string
+// to sort array of number/ Soting object arrays
+
+// Itration of array
+students.forEach((valueOfStudent) => {
+	console.log(valueOfStudent)
+}); // prints all students name
+//In JavaScript, arrays use numbered indexes.
+// In JavaScript, objects use named indexes. Associate aray/ Hashes
 
 
-// Loops
-for (var i = 0; i < ages.length; i++) {
-	console.log(ages[i]);
-	if (i === 2) {
-		break;
-	} else {
-		continue;
-	}
-}
 
-while (i < students.length) {
-	i++
-	console.log(i);
-}
-
-// Operators and Switch statement
+/************************************** */
 // Functions - helps with DRY (Dont repeat yourself)
 // This is a function statement : declare and define the function
 /*
@@ -139,6 +193,10 @@ function calculaterAge(yearOfBirth) {
 /*
 HOISTING
 Function declarations and function variables are always moved (‘hoisted’) to the top of their JavaScript scope by the JavaScript interpreter
+In JavaScript, a variable can be declared after it has been used.
+	Example: x=6; var Sum =x+10; var x;
+NOTE: Variables and constants declared with let or const are not hoisted!
+
 
 */
 function yearsToRetire(name, yearOfBirth) {
@@ -151,7 +209,6 @@ function yearsToRetire(name, yearOfBirth) {
 	}
 
 }
-
 console.log(calculaterAge(1999));
 console.log(yearsToRetire('Gil', 1980));
 
@@ -176,6 +233,55 @@ console.log(yearsToRetire('Gil', 1980));
 		
 	All other Function you declare and define to begin with are Function Declaration
 */
+
+// Function expression example
+var calculateAgeExpression = function (yearOfBirth) {
+	var age = 2017 - yearOfBirth
+	return age;
+}
+
+	// IIFE
+	(function () {
+		var score = Math.random() * 10;
+		console.log(score);
+	})();
+
+/*
+// SCOPING
+		Global JavaScript Variables
+			A variable declared outside a function, becomes GLOBAL.
+		Variables declared within a JavaScript function, become LOCAL to the function.
+*/
+
+
+/*
+	Using Stict mode:
+		Strict mode is declared by adding "use strict"; to the beginning of a script or a function.
+		Helps to write cleaner code such that no undeclared variable
+*/
+
+/*
+In JavaScript there are 5 different data types that can contain values:
+
+string
+number
+boolean
+object
+function
+There are 6 types of objects:
+
+Object
+Date
+Array
+String
+Number
+Boolean
+And 2 data types that cannot contain values:
+
+null
+undefined
+*/
+
 
 // Objects N Properties 
 // 1. Object literal : Object literals encapsulate data, enclosing it in a tidy package. Has name value pair.
