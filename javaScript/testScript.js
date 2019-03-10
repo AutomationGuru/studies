@@ -413,6 +413,14 @@ var sub = function (a, b) {
 //}
 //
 
+/*** MODULE IMPORT EXPORT */
+// Node.js has a set of built-in modules which you can use without any further installation.
+// Importing modules using require, and exporting using module.exports and exports.foo.
+// To include a module, use the require() function with the name of the module:
+// Example: var http = require('http');
+// var dt = require('./myfirstmodule');
+// Importing modules using ES6 import, and exporting using ES6 export
+
 //****JavaScript Errors - Throw and Try to Catch */
 /* 
 	The try statement allows you to define a block of code to be tested for errors
@@ -438,3 +446,49 @@ var name = document.querySelector("#name-0").textContent;
 console.log(name);
 // WE can also manipulate the CCS styling of the page
 document.querySelector('#score-0').style.color = 'red';
+
+
+
+/*
+PACKAGE MANAGERS
+What is NPM?
+	NPM is a package manager for Node.js packages, or modules if you like.
+	www.npmjs.com hosts thousands of free packages to download and use.
+	The NPM program is installed on your computer when you install Node.js
+
+	A package in Node.js contains all the files you need for a module.
+
+*/
+
+
+/*
+NODE JS
+Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. The Node.js package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+Node.js is an open source JavaScript run-time environment used for making web servers and other networking tools.
+Node.js is similar to PHP, but there are some notable differences. In PHP, functions tend to block until completion, which means that commands execute one at a time. In, Node.js, commands are executed in parallel, and callbacks are used to determine completion or failure.
+A new release of Node.js is cut from the GitHub master branch every six months around April and October. Whenever a new odd-numbered version comes out, the most recent even version goes to long-term support, or LTS.
+Versions under LTS receive active support for 18 months followed by an additional 12 months of maintenance support.
+
+
+*/
+
+/*
+Node Version Manager (NVM)
+	nvm seems to manage multiple versions but on a global basis. That is, you can switch between versions  of Node
+	Node Version Manager (NVM) is a neat little bash script that allows you to manage multiple versions of Node.js on the same box. A version manager really helps to test our applications under different versions of the related software
+
+	INSTALL:
+		curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+	Installing Different Versions of Node.js
+		nvm install v6.5.0
+	To designate the latest version of Node.js as your default, run:
+		nvm alias default node
+		nvm alias my-favorite 6.5.0
+
+		and use them as
+
+		nvm use my-favorite
+
+		To get a list of the Node.js versions you have installed as well as your assigned aliases, just run:
+			nvm ls
+*/

@@ -1,0 +1,15 @@
+{
+  "name": "webdriverioplayground",
+  "version": "1.0.0",
+  "description": "playground project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-standalone": "^6.15.6",
+    "webdriverio": "^5.7.1"
+  }
+}
