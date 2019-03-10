@@ -43,7 +43,7 @@ console.log(firstName.length); // 12
 console.log(firstName.concat(lastname)); //BlahBlahBalhlololol
 console.log(firstName.indexOf('h')) // returns 3, also  Returns -1 if not found
 console.log(firstName.indexOf('h', 5)) // Starts to look for h after 5 char
-console.log(firstName.search('h')) // returns 3 but same as index of but cannot take in regex
+console.log(firstName.search('h')) // returns 3 but same as index of but cannot take in regex firstName.search(/h/gi)
 console.log(firstName.slice(7, 9)); // Gets 7,8 char, also look for -9 to -7 will get the same results
 console.log(firstName.slice(7)); // everything after 7
 console.log(firstName.substring(10, 12)); // cannot accept negative indexes when using two parameter. except that same as slice
@@ -291,7 +291,10 @@ var george = {
 	lastName: 'Goldman',
 	age: 35,
 	occupation: 'manager',
-	isMarried: true
+	isMarried: true,
+	fullName: function () {
+		return this.firstName + " " + this.lastName;
+	}
 };
 // Reading values part of the object
 // 1. Dot Notation: Object.key
@@ -299,6 +302,8 @@ var george = {
 console.log(george);
 console.log(george.age);
 console.log(george['isMarried']);
+console.log(george.fullName()); // if you access the function with () returns only definition
+
 // Object values can be updated / Data Mutation
 // 2 ways as we read data from it
 george.lastName = 'miller';
@@ -306,7 +311,7 @@ george['occupation'] = 'CTO';
 console.log(george);
 
 
-// 2. Creating object with object keyword
+// 2. Creating object with object keyword using new
 var mitch = new Object();
 mitch.firstName = 'Mitch';
 mitch.lastName = 'Brand';
@@ -315,6 +320,7 @@ console.log(mitch);
 
 // The data that the object holds can be anything, from numbers, string, array, functions and even objects
 // Example of JS
+// Getter and setters can also be used
 var john = {
 	firstName: 'John',
 	lastName: 'Greg',
@@ -327,11 +333,21 @@ var john = {
 	},
 	calculateAge: function () {
 		this.age = 2017 - this.yearOfBirth;
+	},
+	get userName() {
+		return (this.firstName + " " + this.lastName);
+	},
+	set userLastName(valueOfName) {
+		this.lastName = valueOfName;
 	}
+
 };
 
 john.calculateAge();
 console.log(john)
+john.userName // returns John Greg, this way the getteres are easier to invoke 
+john.userLastName = "guru" // updates the setter method
+
 
 
 /*
@@ -397,6 +413,12 @@ var sub = function (a, b) {
 //}
 //
 
+//****JavaScript Errors - Throw and Try to Catch */
+/* 
+	The try statement allows you to define a block of code to be tested for errors
+	The catch statement allows you to define a block of code to be executed,
+	The finally statement lets you execute code, after try and catch, regardless of the result
+*/
 /*
 *
 *	DOM MANIPULATION - document object model
