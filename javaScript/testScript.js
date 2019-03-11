@@ -469,7 +469,7 @@ Node.js is similar to PHP, but there are some notable differences. In PHP, funct
 A new release of Node.js is cut from the GitHub master branch every six months around April and October. Whenever a new odd-numbered version comes out, the most recent even version goes to long-term support, or LTS.
 Versions under LTS receive active support for 18 months followed by an additional 12 months of maintenance support.
 
-
+NODE JS release cycles: https://github.com/nodejs/Release
 */
 
 /*
