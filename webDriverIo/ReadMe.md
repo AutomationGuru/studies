@@ -2,7 +2,13 @@
 selenium-webdriver - The official WebDriver JavaScript bindings from the Selenium project.
     WebDriverJs is the Official javascript implementation of selenium. It uses the Selenium's Json-wire-protocol to interact with browser as selenium java doesWebdriverjs is packaged as 'selenium-webdriver' under npm package which runs on nodejs.
 
-WebdriverIO - better implementation of WebDriver bindings with predefined 50+ actions.
+WebdriverIO - better impliementation of WebDriver bindings with predefined 50+ actions.
+
+    Core
+        webdriver - A Node.js bindings implementation for the W3C WebDriver and Mobile JSONWire Protocol (Selenium webdriver binding)
+        webdriverio - A next-gen WebDriver test automation framework for Node.js
+        @wdio/cli - A WebdriverIO testrunner command line interface
+    
 
 Nightwatch - efficient and straightforward Javascript End-to-End tests.
 
