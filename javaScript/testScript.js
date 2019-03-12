@@ -470,6 +470,10 @@ A new release of Node.js is cut from the GitHub master branch every six months a
 Versions under LTS receive active support for 18 months followed by an additional 12 months of maintenance support.
 
 NODE JS release cycles: https://github.com/nodejs/Release
+
+When running a script and if you need to access an env variable you can do the following
+	process.env.ENV_VARIABLE
+	where ENV_VARIABLE is the variable that is set
 */
 
 /*
