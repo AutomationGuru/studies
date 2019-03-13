@@ -18,7 +18,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/*.js'
+        './test/*'
     ],
     // Patterns to exclude.
     exclude: [
@@ -90,7 +90,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://www.made.com/',
+    baseUrl: 'http://webdriveruniversity.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -122,7 +122,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    // reporters: ['dot'],
+    reporters: ['spec'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -160,8 +160,18 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+        var chai = require('chai');
+        global.expect = chai.expect;
+        chai.Should();
+        global.should = chai.should();
+        global.assert = chai.assert;
+
+        browser.setViewportSize({
+            width: 1200,
+            height: 800
+        });
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
