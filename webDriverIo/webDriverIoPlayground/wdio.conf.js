@@ -22,7 +22,7 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        './test/pageObject/*.js'
     ],
     //
     // ============
@@ -90,7 +90,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://webdriveruniversity.com',
+    baseUrl: 'https://www.google.co.uk/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -122,7 +122,21 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
+    reporters: ['dot',
+        'spec',
+        'concise',
+        ['junit', {
+            outputDir: './junitReport',
+            outputFileFormat: function (opts) { // optional
+                return `results-${opts.cid}.${opts.capabilities}.xml`
+            }
+        }],
+        ['allure', {
+            outputDir: './allure-results',
+            disableWebdriverStepsReporting: false,
+            disableWebdriverScreenshotsReporting: true,
+        }]
+    ],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -171,6 +185,8 @@ exports.config = {
             width: 1200,
             height: 800
         });
+        var del = require('del');
+        del(['./junitReport', './allure-result']);
     },
     /**
      * Runs before a WebdriverIO command gets executed.

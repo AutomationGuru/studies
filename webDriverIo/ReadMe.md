@@ -75,7 +75,52 @@ WebdriverIO - better impliementation of WebDriver bindings with predefined 50+ a
                         Given the assertion fails the test will not continue
                         Wdio allows to centralise the assertions
 
+                    POM
+                        Abstract the Page object methods and properties in a new page class so that its abstract to the tests
+                        Have selectors in Page class and abstract from tests making it simple 
 
+                    REPORTING/SCREENSHOTS
+                        NOTE: WebdriverIO allows the use of multiple reported together
+                        This is updated on the reporter in Wdio config file
+
+                        DOT
+                            npm install @wdio/dot-reporter --save-dev
+                            Add this in wdio file: reporters: ['dot']
+                            This makes sure you see the summary of the test run and very simple console output     
+                                Example for a filure test:
+                                    "dot" Reporter:
+                                    ...F                        
+                        SPEC
+                            A WebdriverIO plugin to report in spec style
+                            npm install @wdio/spec-reporter --save-dev
+                            reporters: ['dot', 'spec']
+                            Shows the test runs in spec written in test helping to debug if any fails on console
+
+                        CONCISE
+                            npm install @wdio/concise-reporter --save-dev
+                            reporters: ['dot', 'concise']
+                            Shows a concise report
+                        JUNIT
+                            Reports in junit format in xml which can be used by CI system to display the results
+                                npm install @wdio/junit-reporter --save-dev
+                                To add this in Wdio config file make sure you can indicate the output folder for the Junit report 
+                                To do this add an array Object with in the reporter section 
+
+                        ALLURE REPORT
+                            This is more graphical report
+                                npm install @wdio/allure-reporter --save-dev
+                                add in wdio config: 
+                                    reporters: [['allure', {
+                                        outputDir: 'allure-results',
+                                        disableWebdriverStepsReporting: true,
+                                        disableWebdriverScreenshotsReporting: true,
+                                    }]]
+                    Once the reports are generated you also need a way to remove them on every new run
+                    you can use the beforeSession hook on wdio file to do that
+
+
+
+                    CI/CD integration                        
 
 
 

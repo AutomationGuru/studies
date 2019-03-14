@@ -500,4 +500,14 @@ Node Version Manager (NVM)
 
 /*
 JSON Parser
+JSON.parse()
+*/
+/* CLASS IN JS
+Name with upper case
+to create one use class <clas Name>{
+	
+}
+
+INHERITANCE
+
 */
