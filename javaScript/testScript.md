@@ -511,3 +511,53 @@ to create one use class <clas Name>{
 INHERITANCE
 
 */
+
+JS Continue
+- CREATING OBJECTS
+	
+Prototype - constructor/keyword, So every class has prototype property  which can be used to add properties to the object/class
+Inheritance - We use prototype property to add eithier attributes or methods to a class
+Every object created is an instance of the object constructor has a methods in prototype property and any new object created inherits the Object 
+
+Using new Keyword to create an object
+var john = new Person("John", 20, 1999) // create object
+	Person.prototype.calculateAge= function(){ "Do something "};
+	Person.prototype. 
+
+
+var john = Object.create(<prototype>)
+
+
+- FUNCTIONS - 
+	In JS function are first-class functions, meaning they can have properties and also methods just like any object but we can invoke the function. They are function Objects
+	* passing fucntions as arguments
+	* returning arguments as arguments	
+		Invoking functions that return a function to do that:
+
+		var d=functionA(x){
+			returns funtionB(y){
+
+			}
+		}
+		d(x)(y);		
+
+	- .call/ .apply invokes a method from another class with the constructer set(this variable) invoke the method right away
+	.bind helps to set a variable with the 	function from a differnt class which can be used to invoke later and not immediately
+
+- IIFE Immediate invoke function
+	In JS IIFE - is a function which is executued immediately as its created, This pattern is often used when trying to avoid polluting the global namespace, because all the variables used inside the IIFE (like in any other normal function) are not visible outside its scope
+
+	To Do this us () and write the anonymous fuction with in that (function(){})();	and invoke it with the closing () in the end 
+	By using () it looks at it as expression and not declaration/statement, and the invoke the fuction 
+
+	IIfE can only be called only once and the idea is with data privacy only 
+
+- Lexical scoping: Variables declared outside of a function are global variables and are visible everywhere in a JavaScript program. Variables declared inside a function have function scope and are visible only to code that appears inside that function
+
+	
+- A closure is an inner function that has access to the outer (enclosing) function's variables—scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function's variables, and it has access to the global variables.
+
+
+ReactJS allows to build the reusable componenets you can use through your webpage
+ - Helps to update the page with the dynamic component with out having to reach out to the server to fetch a new view
+ - Angular helps to build the Single page application - Angular 2 has the tools to control the user navigation/what user does, but core react Js can do that but needs more library to do that 

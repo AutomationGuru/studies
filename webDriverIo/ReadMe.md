@@ -121,6 +121,18 @@ WebdriverIO - better impliementation of WebDriver bindings with predefined 50+ a
 
 
                     CI/CD integration                        
+                        JENKINS
+                            install jenkins.war file and run it with java
+                            install plugins locally, nodejs plugin and update the config to use it, html publisher report
+
+
+
+WebDriverIO 4 vs  WebDriverIO 5
+    Many breaking changes have been introduces in v5, the commands change and the way you invoke the commands also change. There is no longer chains of commands you can use. There are also removed commands which will break if upgraded
+    NOTE you can see the changes on :
+    https://github.com/webdriverio/webdriverio/blob/master/CHANGELOG.md
+    
+
 
 
 
