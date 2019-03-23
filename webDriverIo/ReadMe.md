@@ -1,13 +1,14 @@
 
 
 # Getting started with WebdriverIO
-As all node project, do an npm init to create your package
+As all node project, do an **npm init** to create your package
+Use then the wdio cli to create the config file which adds the test framwwork 
+A stand alone selenium dependency can be addd if the test are run locally
 
 The following make up the WebdriverIO package
 
 **selenium-webdriver**  The official WebDriver JavaScript bindings from the Selenium project.  
 WebDriverJs is the Official javascript implementation of selenium. It uses the Selenium's Json-wire-protocol to interact with browser as selenium java doesWebdriverjs is packaged as 'selenium-webdriver' under npm package which runs on nodejs.  
-
 **WebdriverIO** better impliementation of WebDriver bindings with predefined 50+ actions.  
 To begin with you can test it with a remote instance locally (This is not usual as we use the wdio tool and configure it)  
 To do this create a remote browser capability and run test against it, prior to this start the stand alone selenium server to get the test to run remotly  
@@ -26,6 +27,7 @@ With WebdriverIO v5 and up, the testrunner has moved into the @wdio/cli NPM pack
     `./node_modules/.bin/wdio config //Generate Configuration File`  
 - Once you answer the required you can see a wdio.conf.js created  
 - Within your spec files(test file) or step definition you can access the webdriver instance using the global variable **browser**.   
+**$** is a short cut to findelement with locators / Selectors
 
 **You don't need to initiate or end the Selenium session. This is taken care of by the wdio testrunner.**  
 
@@ -142,6 +144,7 @@ https://github.com/webdriverio/webdriverio/blob/master/CHANGELOG.md
 To access V4 docs:
 
 
+# Integration with Saucelabs
 
 **Nightwatch** - efficient and straightforward Javascript End-to-End tests.
 

@@ -463,11 +463,22 @@ document.querySelector('#score-0').style.color = 'red';
 
 
 ## PACKAGE MANAGERS
-What is NPM?  
+Package Managers is essentially a way to automate the process of installing, upgrading, configuring or removing software.   
+**What is NPM?**  
 	NPM is a package manager for Node.js packages, or modules if you like.  
 	www.npmjs.com hosts thousands of free packages to download and use.  
 	The NPM program is installed on your computer when you install Node.js  
 	A package in Node.js contains all the files you need for a module.  
+
+**What is YARN?**  
+Yarn is also a package manager which is created with by FB to solve the problems they were having while using NPM particularly the problems with consistency, security and speed.  
+Its fast as Yarn installs multiple packages at once compared to NPM which installs one at a time.   
+**NPM’s security issues.**  
+- NPM allowed packages to run code on installation. NPM will run code from dependencies automatically and on the fly. While this feature has its conveniences, it raised a few security concerns.   
+- Yarn is different to NPM, is that Yarn only installs from your yarn.lock or package.json files. Yarn.lock ensures that the same package is installed throughout all devices, this reduces the possibility of bugs from having different versions installed.
+- Yarn can also be run in offline mode if run once on that machine  
+- **NPM 5** introduced the package-lock.json file for better versioning control.
+
 
 ## NODE JS  
 Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. The Node.js package ecosystem, npm, is the largest ecosystem of open source libraries in the world.  
