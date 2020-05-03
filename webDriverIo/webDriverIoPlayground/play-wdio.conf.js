@@ -19,6 +19,20 @@ exports.config = {
     waitforTimeout: 10000,
     connectionRetryCount: 3,
     services: ['selenium-standalone'],
+    seleniumArgs: {
+        drivers: {
+            chrome: {
+                version: '80.0.3987.16',
+            },
+        },
+    },
+    seleniumInstallArgs: {
+        drivers: {
+            chrome: {
+                version: '80.0.3987.16',
+            },
+        },
+    },
     framework: 'mocha',
     reporters: ['dot',
         'spec',
@@ -29,11 +43,11 @@ exports.config = {
                 return `results-${opts.cid}.${opts.capabilities}.xml`
             }
         }],
-        ['allure', {
-            outputDir: './allure-results',
-            disableWebdriverStepsReporting: false,
-            disableWebdriverScreenshotsReporting: true,
-        }]
+        // ['allure', {
+        //     outputDir: './allure-results',
+        //     disableWebdriverStepsReporting: false,
+        //     disableWebdriverScreenshotsReporting: true,
+        // }]
     ],
     mochaOpts: {
         ui: 'bdd',

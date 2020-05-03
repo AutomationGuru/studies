@@ -1,4 +1,12 @@
 # JAVASCRIPT HELP DOCS 
+Each browser has a JS engine which interprets the js and each browser has its own 
+They all implement the ECMAScript standards and differes on anything that is not defined
+
+- ECMAScript vs JS   
+ECMAScript defines the standards of javacript language while JS is the implemetation of it
+Every year new version of JS is released, so when we begin with what syntax to use?
+This way we can transpile back to anyversion we need and eventually the systems will catch up with newer version 
+
 ES5 is supported on all browser  
 ES6/ ES2015 - not yet supported by all browsers  
 ES2016 - not many different than ES2015  
@@ -7,7 +15,7 @@ This study is on ES5/ES6
 ## Variables
 Variables declared with the var keyword can not have Block Scope.  
 Variables declared with the let keyword can have Block Scope. - meaning Variables with let cannot be used outside
-Variables defined with let are not hoisted to the top.
+Variables defined with let and const are not hoisted to the top.
 
 * ES5  Example:  
 ```var userName = "john";
@@ -30,9 +38,10 @@ let i = 5;
 for (let i = 0; i < 10; i++) {
 	// some statements
 } // Here i is 5
+username = 'GuruKiran' // Creates a variable globally
 ```
 
-## String functions
+### String functions
 ```
 var firstName = 'BlahBlahBalh';
 var lastname = 'lololol';
@@ -50,7 +59,7 @@ console.log(firstName.trim()); // removes white space at the end
 console.log(firstName.split("")); // Splits the string into an array, var x = firstname.split("")
 ```
 
-# Number methods
+###  Number methods
 ```
 console.log(height.toString()); // returns value in string 
 // Number() method always returns a number from its argument
@@ -59,11 +68,19 @@ Number(false);         // returns 0
 Number("10");          // returns 10 
 ```
 
-# type coercion
-JavaScript is a weakly-typed language, values can also be converted between different types automatically  
+### type coercion
+JavaScript is a weakly-typed language, values can also be converted between different types automatically  on explicityly
+Two types of Coercion  
+```
+const x=42;
+const explicitCoercion = x.toString(); // Explicit coercion where a user requests for the typecasting
+const implicitCoercion = x+"";  // Implicit where JS converts it 
+```
 It usually happens when you apply operators to values of different types - 2/’5'  
+
 One operator that does not trigger implicit type coercion is ===, which is called the strict equality operator.  
 The loose equality operator == on the other hand does both comparison and type coercion if needed.  
+Due to the implicit coercion always use === when comparing
 
 * Example of implicit type coercion.
 ```
@@ -81,7 +98,7 @@ if (age === 26) { // Fails and else is executed
 ```
 
 
-* The Ternary Operator and Switch Statements  
+###  The Ternary Operator and Switch Statements  
 ```
 age >= 18 ? console.log(firstName + ' drinks beer.') : console.log(firstName + ' drinks juice.');
 ```
@@ -104,7 +121,7 @@ switch (job) {
 }
 ```
 
-* Truthy and Falsy values  
+###  Truthy and Falsy values  
 falsy values: undefined, null, 0, '', NaN  
 truthy values: NOT falsy values   
 ```
@@ -116,7 +133,7 @@ if (height) {
 }
 ```
 
-* Loops  
+###  Loops  
 	- For loop
 ```
 		var ages = [10, 20, 30];
@@ -151,7 +168,7 @@ if (height) {
 	}
 	```
 
-## Arrays
+### Arrays
 ``` 
 var students = ['John', 'gil', 'gaia'];
 var ages = [10, 20, 30];
@@ -179,7 +196,7 @@ students.forEach((valueOfStudent) => {
 
 
 
-## Functions - helps with DRY (Dont repeat yourself)
+### Functions - helps with DRY (Dont repeat yourself)
  Function Declarations feel like they were intended to mimic Java style method declarations but Java methods are very different animals. In JavaScript functions are living objects with values. Java methods are just metadata storage to larger extent. 
 ```
 // This is a function statement : declare and define the function
@@ -193,9 +210,12 @@ This can be invoked before the function is defined due to Function hoisting
 ### HOISTING
 Function declarations and function variables are always moved (‘hoisted’) to the top of their JavaScript scope by the JavaScript interpreter  
 In JavaScript, a variable can be declared after it has been used.  
-	Example: x=6; var Sum =x+10; var x;  
+The variable declarations are hoisted but not assign the value, so the interpretor know the variable exists and assignment happens when it happens in the program 
+	Example: var x=6; var Sum =x+10; var x;  
 NOTE: Variables and constants declared with let or const are not hoisted!
 ```
+	console.log(calculaterAge(1999));
+	console.log(yearsToRetire('Gil', 1980));
 	function yearsToRetire(name, yearOfBirth) {
 		var age = calculaterAge(yearOfBirth);
 		var yearsLeft = 65 - age;
@@ -206,10 +226,15 @@ NOTE: Variables and constants declared with let or const are not hoisted!
 		}
 
 	}
-	console.log(calculaterAge(1999));
-	console.log(yearsToRetire('Gil', 1980));
+	
+	cannotHoist(1,2);  // This will fail as the anonymouns function is assigned to a const and they are not hoisted
+	const cannotHoist = function(a,b){
+		return a+b;
+	}
+
+	Javascipt engine when running first reads the file for any syntax error, function definitions are saved in memory, lexically scoped variable (var) will be declared and executes the scripts. 
 ```
-# FUNCTIONS
+### FUNCTIONS
 
 * Expressions  
  any valid set of literals, variables, operators, and expressions that evaluates to a single value.  
@@ -252,7 +277,7 @@ var calculateAgeExpression = function (yearOfBirth) {
 ```
 
 
-## SCOPING 
+### SCOPING 
 Global JavaScript Variables  : A variable declared outside a function, becomes GLOBAL.  
 Variables declared within a JavaScript function, become LOCAL to the function.
 
@@ -280,6 +305,8 @@ null
 undefined  
 
 ### Objects N Properties 
+Objects are mutable and stored by ref   
+Ways to create an Object in JS   
 1. Object literal : Object literals encapsulate data, enclosing it in a tidy package. Has name value pair.
 ```
 // Creation
@@ -296,14 +323,14 @@ var george = {
 ```
 
 * Reading values part of the object  
-1. Dot Notation: Object.key  
-2. Square braces: object['key'] , key must be passed as string  
-```
-console.log(george);
-console.log(george.age);
-console.log(george['isMarried']);
-console.log(george.fullName()); // if you access the function with () returns only definition
-```
+	1. Dot Notation: Object.key  
+	2. Square braces: object['key'] , key must be passed as string  
+	```
+	console.log(george);
+	console.log(george.age);
+	console.log(george['isMarried']);
+	console.log(george.fullName()); // if you access the function with () returns only definition
+	```
 
 * Object values can be updated / Data Mutation  
 ```
@@ -312,7 +339,7 @@ george['occupation'] = 'CTO';
 console.log(george);
 ```
 
-* Creating object with object keyword using new  
+2. Creating object with object keyword using new  
 ```
 var mitch = new Object();
 mitch.firstName = 'Mitch';
@@ -321,6 +348,7 @@ mitch['age'] = 65;
 console.log(mitch);
 ```
 The data that the object holds can be anything, from numbers, string, array, functions and even objects  
+
 
 * Getter and setters can also be used  
 Its useful instead of functions as when you invoke it you dont really need to use () withe the dot
@@ -354,17 +382,43 @@ john.userLastName = "guru" // updates the setter method
 
 ```
 
-- CREATING OBJECTS
-Prototype - constructor/keyword  
-So every class has prototype property  which can be used to add properties to the object/class  
-Inheritance - We use prototype property to add eithier attributes or methods to a class  
-Every object created is an instance of the object constructor has a methods in prototype property and any new object created inherits the Object   
-Using new Keyword to create an object
+- Prototype/Prototypal inheritance - constructor/keyword  
+all non primitive types have properties and methods asscoiated with them - prototype
 ```
-var john = new Person("John", 20, 1999) // create object
-	Person.prototype.calculateAge= function(){ "Do something "};
-	Person.prototype. 
-var john = Object.create(<prototype>)
+let a=[];
+a.push('test') // adds a value and push is function asscoiated with array objects, Array.prototype.push()
+// a.__proto__ shows all the supported proptotypes methods for the array
+// a.__proto__.__proto__ shows the methods which are inherited by the array object of the object methods
+let s= 'string value'
+s.toUpperCase() // will convery the string to upper case
+// Functions that can invoked on non primitives 
+```
+Each object has reference to its prototype   
+So every obejct type has prototype property  which can be used and add more custome properties to the object/class    
+
+Inheritance - We use prototype property for each specific object is inherited from the main object methods as well
+
+Every object created is an instance of the object constructor has a methods in prototype property and any new object created inherits the Object   
+
+
+- Object Mutation example
+```
+const o = {
+	a:'a',
+	b:'b'
+};
+const o2 = o;
+
+o.a='new value';
+
+
+cosole.log(o2.a) // will have new value printed as the object o2 is stroed by ref and both o and o2 points to same obj
+
+
+- Global Object
+	At runtime we have a global object any variable(lexically scoped)/method declared gets added to the global object
+	In the node env, the object is called `global`
+	While in browser `window` is a global object
 ```
 
 ## EXECUTION CONTEXT n EXECUTION STACK:
@@ -400,7 +454,7 @@ The execution context object has the following:
 		1. Creation phase: create a variable object with scope and understand the this variable, Functions are defined and variable are set to undefiend  
 		2. Execution phase runs the function in global scope or the scope on which its declared
 
-## HOISTING EXAMPLE
+### HOISTING EXAMPLE
 ```
 console.log(addition(2, 3)); // this will be run as the function is hoisted and the declartion are in global execution object
 function addition(a, b) {
@@ -548,15 +602,58 @@ class <clas Name>{
 .call/ .apply invokes a method from another class with the constructer set(this variable) invoke the method right away  
 .bind helps to set a variable with the 	function from a differnt class which can be used to invoke later and not immediately
 
-- 
 - Lexical scoping: Variables declared outside of a function are global variables and are visible everywhere in a JavaScript program. Variables declared inside a function have function scope and are visible only to code that appears inside that function
-
-	
-- A closure is an inner function that has access to the outer (enclosing) function's variables—scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function's variables, and it has access to the global variables.
-
 
 ## INHERITANCE
 
+
+## CLOSURE
+- A closure is an inner function that has access to the outer (enclosing) function's variables—scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function's variables, and it has access to the global variables.
+
+```
+function makeFunctionArray() {
+  const arr = []
+
+  for (var i = 0; i < 5; i++) {
+    arr.push(function () { console.log(i) })
+  }
+  console.log(i) // will have 5 due to var scoping which is until the function ends
+  // if let is used to declare i, i scope will be with in for and will work as expected
+  return arr
+}
+const functionArr = makeFunctionArray()
+functionArr[0]() // returns 5 
+
+```
+Example 2
+```
+function makeHelloFunction() {
+  var message = 'Hello!'
+
+  function sayHello() {
+    console.log(message)
+  }
+
+  return sayHello
+}
+
+const sayHello = makeHelloFunction()
+
+// the variable called message is not in scope here
+console.log('typeof message:', typeof message)
+// but the function sayHello still references a variable called message
+console.log(sayHello.toString())
+
+// because of the closure, sayHello still has access to the variables within scope
+// when it was declared
+sayHello()
+```
+
+## IFE - immediate Invoked Functional Expression    
+
+## Transpilers
+They help to convert the code from ES6, ES2016 etc back to ES5 format. 
+Polular ones include babel, Typescript, coffeeScripts etc
 
 ## ReactJS 
 allows to build the reusable componenets you can use through your webpage
