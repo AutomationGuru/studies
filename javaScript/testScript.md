@@ -248,13 +248,17 @@ NOTE: Variables and constants declared with let or const are not hoisted!
  ```
 * Function Expression : A function expression can be stored in a variable:  
 Declare define and save the value   
-* IIFE - immediate Invoked Functional Expression    
+* **IIFE** - immediate Invoked Functional Expression    
 	In JS IIFE - is a function which is executued immediately as its created, This pattern is often used when trying to avoid polluting the global namespace, because all the variables used inside the IIFE (like in any other normal function) are not visible outside its scope  
+	This is just a bunch of statements   
+	It creates a closure   
+
 	To Do this us () and write the anonymous fuction with in that  
 	`(function(){})();  `
 	and invoke it with the closing () in the end
 	By using () it looks at it as expression and not declaration/statement, and the invoke the fuction   
 	IIfE can only be called only once and the idea is with data privacy only 
+	IIFE helps with encapuslating variables 
 
 ```
 //	Named Function Expression
@@ -275,6 +279,54 @@ var calculateAgeExpression = function (yearOfBirth) {
 		console.log(score);
 	})();
 ```
+
+* **First Class/Order Function**   
+Functions can be    
+    - Assigned to variables, value of array, Object value
+	- pass function as arguments to other function
+	- return functions
+first order functions, don’t take a function as an argument or return a function as output.
+
+* **High Order functions**    
+    - Any function that take one or more  function as input and returns a function     
+	1. Map(Array Map)    
+		method creates a new array with the results of calling a function for every array element.calls the provided function once for each element in an array, in order.
+		```
+		var numbers = [65, 44, 12, 4];
+		var newarray = numbers.map(myFunction) // [650, 440, 120, 40 ]
+
+		function myFunction(num) {
+			return num * 10; 
+		}
+		```
+
+	2. Filter   
+		creates an array filled with all array elements that pass a condition (which is form of function)   
+
+		```
+		const words = [
+			'spray', 
+			'limit', 
+			'elite', 
+			'exuberant', 
+			'destruction', 
+			'present'];
+
+		const result = words.filter(word => word.length > 6);
+		// ["exuberant", "destruction", "present"]
+		```
+	3. Reduce   
+		method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.  
+		```
+		const array1 = [1, 2, 3, 4];
+		// reducer Method to pass which adds elemenets
+		const reducerMethod = (accumulator, currentValue) => accumulator + currentValue;
+
+		
+		console.log(array1.reduce(reducerMethod)); 
+		// expected output as : 
+		// 1+2 > 3+3 > 6+4 => 10
+		```
 
 
 ### SCOPING 
@@ -421,9 +473,12 @@ cosole.log(o2.a) // will have new value printed as the object o2 is stroed by re
 	While in browser `window` is a global object
 ```
 
-## EXECUTION CONTEXT n EXECUTION STACK:
+## EXECUTION CONTEXT/SCOPE n EXECUTION STACK:
+
+JS is a single threaded syncronous language, if a script takes ages to load that will make the page unresponsive.    
 JS engine executes this JS code  in the browser
-differnt engine such as: Google V8 used in chrome, Spider Monkey, JS core   
+differnt engine such as: Google V8 used in chrome, Spider Monkey, JS core     
+
 Typically the engine does the following:
  script > is read by the parser (verifys the syntax) > converts to machine code > invokes the script  
 
@@ -445,7 +500,7 @@ The execution context object has the following:
 	This is known as hoisting, where the function and the variables are known before the code is executed.  
 	Also note this work only on FUNCTION DECLARTION, while Function expression hoisting does nmot work as the variables are undefined  
 	
-	- Scope chain : Where can a variable or fucntion can be accessed. Each function and variable has scope. 
+	- Scope chain : Where a variable or fucntion can be accessed. Each function and variable has scope. 
 	In JS scope is based on creating a function, each new function creates a scope or Lexical scoping.
 	Lexical scoping is when function written with a function gets access to variable and function of parent function.  
 	- this variable :
@@ -453,6 +508,51 @@ The execution context object has the following:
 	When a function is called its put on top of the execution stack,   
 		1. Creation phase: create a variable object with scope and understand the this variable, Functions are defined and variable are set to undefiend  
 		2. Execution phase runs the function in global scope or the scope on which its declared
+#### this keyword 
+this keyword in JS is different to other languages   
+1. In global Context: this referes to the global obejct, on node all global variable or on browser this returns window
+```
+function namePerson() {
+    console.log(this.name);
+}
+var name = "Doug";
+namePerson();     // "Doug"
+
+
+OR
+
+
+function test_this() {
+	return this;
+}
+test_this();
+```
+
+2. Calling an Object’s Method: we need a way of identifying and referring to the object that we’re currently working with. this serves the purpose by providing our objects the ability to examine themselves, and point at their own properties.
+```
+	var deep_thought = {
+		the_answer: 42,
+		ask_question: function () {
+			return this.the_answer;
+		}
+	};
+	deep_thought.ask_question(); // 42
+```
+
+3. Constructor : 
+Creating a constructor, this is used to refer to the object being created. 
+```
+function BigComputer(answer) {
+	this.the_answer = answer; // attaches the property to the instance 
+	this.ask_question = function () {
+		return this.the_answer;
+	}
+}
+var deep_thought = new BigComputer(42); 
+var the_meaning = deep_thought.ask_question(); //42
+```
+
+
 
 ### HOISTING EXAMPLE
 ```
@@ -497,6 +597,10 @@ The catch statement allows you to define a block of code to be executed,
 The finally statement lets you execute code, after try and catch, regardless of the result
 
 ## DOM MANIPULATION - document object model
+Browser renders HTML to a webpage   
+HTML defines the tree like structures, browser constructs the tree in the memory before showing the page    
+DOM  - Document object model    
+tree like structure browser maintains to be insync with html of the page    
 HTML webpage content is stored in the DOM which can be accessed and changed by JS  
 HTML has elements and attributes like class, class can be used multiple times but ID are unique. The htmp page is divided into two parts  
 Header and body: the body is the visible section of the page, while header has additional information like the fonts and css style sheets  
@@ -581,12 +685,13 @@ JSON Parser
 	JSON.parse()
 
 ## CLASS IN JS
+Introduced in ES6   
 Name with upper case
 to create one use   
 class <clas Name>{	
 }
 
-- FUNCTIONS  
+- METHODS  
 	In JS function are first-class functions, meaning they can have properties and also methods just like any object but we can invoke the function. They are function Objects  
 	* passing fucntions as arguments  
 	* returning arguments as arguments  	
@@ -604,8 +709,16 @@ class <clas Name>{
 
 - Lexical scoping: Variables declared outside of a function are global variables and are visible everywhere in a JavaScript program. Variables declared inside a function have function scope and are visible only to code that appears inside that function
 
-## INHERITANCE
+Static methods are fucntions asscociated with the class itself and not bound to any instance of it
 
+Constructor: When a new class is created invoke this method,
+
+## INHERITANCE
+Given we have a class to add more properties/behaviour to it we inherit and extend the class, to do this we use extends/super keyword    
+* extends - the parent class we are inheriting/extending it
+* super - access the parent class method
+
+Given we have a constructor in the child class, always run the parent constructor to begin with
 
 ## CLOSURE
 - A closure is an inner function that has access to the outer (enclosing) function's variables—scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function's variables, and it has access to the global variables.
@@ -648,8 +761,10 @@ console.log(sayHello.toString())
 // when it was declared
 sayHello()
 ```
+## Callbacks vs Promises vs Async/Await
+TODO 
 
-## IFE - immediate Invoked Functional Expression    
+Callback hells use promises
 
 ## Transpilers
 They help to convert the code from ES6, ES2016 etc back to ES5 format. 
@@ -659,3 +774,10 @@ Polular ones include babel, Typescript, coffeeScripts etc
 allows to build the reusable componenets you can use through your webpage
  - Helps to update the page with the dynamic component with out having to reach out to the server to fetch a new view
  - Angular helps to build the Single page application - Angular 2 has the tools to control the user navigation/what user does, but core react Js can do that but needs more library to do that 
+
+ ### REACT
+ - Allows us to write declarative views that react to changes in data
+ - 
+
+
+  ##### Imperative vs Declarative programming 
