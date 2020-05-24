@@ -184,7 +184,31 @@ students.push('Gaida'); // adds a new element
 ages.join("");// returns a string 102030
 students.sort(); // Sort it alphabetically for arrays of string
 // to sort array of number/ Soting object arrays
+ages.sort((a,b)=>{return a-b});
+The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+```
+const array1 = [1, 4, 9, 16];
 
+// pass a function to map
+const map1 = array1.map(x => x * 2);
+
+console.log(map1);
+
+let numbers = [1, 2, 3, 4]
+let filteredNumbers = numbers.map(function(num, index) {
+ console.log(index) // returns the index of the array being parsed
+})
+```
+The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+
+```
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+const result = words.filter(word => word.length > 6);
+
+console.log(result);
+// expected output: Array ["exuberant", "destruction", "present"]
+```
 
 // Itration of array
 students.forEach((valueOfStudent) => {
@@ -194,6 +218,114 @@ students.forEach((valueOfStudent) => {
 // In JavaScript, objects use named indexes. Associate aray/ Hashes
 ```
 
+
+
+
+
+ES6 introduces four new data structures
+Map, Set, WeakSet, and WeakMap.
+
+### Map
+In ES5, JavaScript objects — which are just arbitrary collections of properties with keys and values — can simulate hashes, but :
+* JavaScript object property keys must be strings,
+* Objects weren’t designed to be used as collections, and as a result there’s no efficient way to determine how many properties an object has
+* Objects have built-in methods like constructor, toString, and valueOf. If one of these was added as a property, it could cause collisions
+
+While Map, are collections of keys and values of any type.
+It’s easy to create new Maps, add/remove values, loop over keys/values and efficiently determine their size
+
+```
+let map = new Map(); // create a new map
+
+map.set('1', 'str1');   // a string key
+map.set(1, 'num1');     // a numeric key
+map.set(true, 'bool1'); // a boolean key
+
+// remember the regular Object? it would convert keys to string
+// Map keeps the type, so these two are different:
+console.log( map.get(1)   ); // 'num1'
+console.log( map.get('1') ); // 'str1'
+
+console.log( map.size ); // 3
+map.delete('1'); // deletes the element with key '1'
+// Iteration over Map
+map.keys() – returns an iterable for keys returns itrator
+// if the keys or values need to be of array
+let arryKeys=Arry.from(map.keys) // converts it to an array
+map.values() – returns an iterable for values,
+map.entries() – returns an iterable for entries [key, value], it’s used by default in for..of
+
+let recipeMap = new Map([
+  ['cucumber', 500],
+  ['tomatoes', 350],
+  ['onion',    50]
+]);
+
+// iterate over keys (vegetables)
+for (let vegetable of recipeMap.keys()) {
+  console.log(vegetable); // cucumber, tomatoes, onion
+}
+
+// iterate over values (amounts)
+for (let amount of recipeMap.values()) {
+  console.log(amount); // 500, 350, 50
+}
+
+// iterate over [key, value] entries
+for (let entry of recipeMap) { // the same as of recipeMap.entries()
+  console.log(entry); // ["cucumber", 500] returns object Array
+}
+
+// Using foreach, the call back gets value first and then the key
+recipeMap.forEach( (value,key)=>{ console.log(key,value)})   
+
+```
+### Set
+Set are ordered lists of values that contain no duplicates.
+Instead of being indexed like arrays are, sets are accessed using keys
+```
+let set = new Set();
+OR
+// let set = new Set(["oranges", "apples", "bananas"]);
+
+let john = { name: "John" };
+let pete = { name: "Pete" };
+let mary = { name: "Mary" };
+
+// visits, some users come multiple times
+set.add(john);
+set.add(pete);
+set.add(mary);
+set.add(john);
+set.add(mary);
+
+// set keeps only unique values
+console.log( set.size ); // 3
+
+set.has(john) // true
+set.delete(pete)  // removes peter from set
+
+// Iteration over Set
+// for (let value of <setname>)
+for (let user of set) {
+  alert(user.name); // John (then Pete and Mary)
+}
+
+
+// Array duplicate removal
+const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
+console.log([...new Set(numbers)]) 
+
+// Given a string
+let text = 'India'
+let mySet = new Set(text) 
+for (let elem of mySet) { console.log(elem)} // Will console log India as I!==i
+
+```
+
+Map and Set‘s references to objects are strongly held and will not allow for garbage collection. This can get expensive if maps/sets reference large objects that are no longer needed, such as DOM elements that have already been removed from the DOM.
+
+To remedy this, ES6 also introduces two new weak collections called WeakMap and WeakSet. These ES6 collections are ‘weak’ because they allow for objects which are no longer needed to be cleared from memory.
 
 
 ### Functions - helps with DRY (Dont repeat yourself)
@@ -684,6 +816,8 @@ A version manager really helps to test our applications under different versions
 JSON Parser
 	JSON.parse()
 
+
+
 ## CLASS IN JS
 Introduced in ES6   
 Name with upper case
@@ -777,7 +911,8 @@ allows to build the reusable componenets you can use through your webpage
 
  ### REACT
  - Allows us to write declarative views that react to changes in data
- - 
 
 
   ##### Imperative vs Declarative programming 
+  > I : Series of steps to achieve it, in JS to modify the tree, we get the element and add a class or remove it etc
+  > D : Say what you want this, ex: html, provides i want the page and browser renders the page
