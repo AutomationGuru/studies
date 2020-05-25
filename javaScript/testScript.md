@@ -173,42 +173,77 @@ if (height) {
 var students = ['John', 'gil', 'gaia'];
 var ages = [10, 20, 30];
 var years = new Array(1999, 2001, 2002);
+
 // array functions
 // push, pop, shift, unshift, indexof
 students.push('Gaida'); // adds a new element 
 // or with the length of the array add a new element
 students[students.length] = 'Gaida';
-var poppedElement = students.pop();
+var poppedElement = students.pop(); //method removes the last element from an array and returns that element.
+
+
 students.shift(); // Removes the first element and returns that to a var
-students.push('Gaida'); // adds a new element 
+// The unshift() method adds one or more elements to the beginning of an array and returns
+console.log(array1.unshift(4, 5)); // add 4,5 to array1
+students.push('Gaida'); // adds a new element  to the end of an array and returns the new length
+
 ages.join("");// returns a string 102030
+
 students.sort(); // Sort it alphabetically for arrays of string
 // to sort array of number/ Soting object arrays
 ages.sort((a,b)=>{return a-b});
-The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
-```
-const array1 = [1, 4, 9, 16];
 
+// concat adds two arrays
+const array3 = students.concat(ages); //['John', 'gil', 'gaia' , 10, 20, 30]
+// same can be achieved with
+const array3 = students[...ages]; //['John', 'gil', 'gaia' , 10, 20, 30]
+
+// includes() method determines whether an array includes a certain value among its entries
+students.includes('John')//true
+age.includes(2) // false
+
+// indexOf method returns the first index at which a given element can be found in the
+ages.indexOf(20) //1 , if not found -1
+
+// Join returns a string by concatinating the array elements with the delimiter shared
+ages.join(); //10,20,30
+ages.join(''); //102030
+
+// The reverse() method reverses an array in place.
+years.reverse() // [2002,2001,1999];
+
+// The slice() returns part of the array from beg and end of the index provided
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+console.log(animals.slice(2));// expected output: Array ["camel", "duck", "elephant"]
+console.log(animals.slice(2, 4)); // expected output: Array ["camel", "duck"]
+console.log(animals.slice(1, 5)); // expected output: Array ["bison", "camel", "duck", "elephant"]
+
+
+// The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+const months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb'); // inserts at index 1
+console.log(months); // expected output: Array ["Jan", "Feb", "March", "April", "June"]
+months.splice(4, 1, 'May');// replaces 1 element at index 4
+console.log(months); // expected output: Array ["Jan", "Feb", "March", "April", "May"]
+months.splice(4) // removes the element on index 4 and returns it while the array has one less element
+
+The every() method tests whether all elements in the array pass the test implemented by the provided function.
+
+The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+const array1 = [1, 4, 9, 16];
 // pass a function to map
 const map1 = array1.map(x => x * 2);
-
 console.log(map1);
-
 let numbers = [1, 2, 3, 4]
 let filteredNumbers = numbers.map(function(num, index) {
  console.log(index) // returns the index of the array being parsed
 })
-```
+
 The filter() method creates a new array with all elements that pass the test implemented by the provided function.
-
-```
 const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
 const result = words.filter(word => word.length > 6);
-
 console.log(result);
 // expected output: Array ["exuberant", "destruction", "present"]
-```
 
 // Itration of array
 students.forEach((valueOfStudent) => {
@@ -217,9 +252,6 @@ students.forEach((valueOfStudent) => {
 //In JavaScript, arrays use numbered indexes.
 // In JavaScript, objects use named indexes. Associate aray/ Hashes
 ```
-
-
-
 
 
 ES6 introduces four new data structures
