@@ -67,6 +67,60 @@ Number(true);          // returns 1
 Number(false);         // returns 0
 Number("10");          // returns 10 
 ```
+### Math
+The math object provides you properties and methods for mathematical constants and functions.   
+the properties and methods of Math are static and can be called by using Math as an object without creating it.
+
+```
+	 // Math.abs(x) - returns absolute number
+	 Math.abs(-1) // 1
+	 Math.abs(null); // 0
+	 Math.abs(20); // 20
+
+	 // Math.random() Returns random number 
+	 // between 0 (inclusive) and 1 (exclusive).
+	 Math.random() //0.8503299768752814
+
+	// Math.round(x) - round to the nearest integer
+	Math.round( 0.4 ) // 0
+	Math.round( 0.5 ) // 1
+	Math.round( 20.7 ) // 21
+	Math.round( -20.3 ) // -20
+
+	// Math.floor(x)  - returns the largest integer 
+	// less than or equal to a number x 
+	Math.floor(20.7) // 20
+	Math.floor(-2.2) // -3
+
+	// Math.ceil( x ) returns the smallest integer
+	// greater than or equal to a number.
+	Math.ceil(20.7) // 21
+	Math.ceil(-2.2) // -2
+
+	// Math.max(value1, value2, ... valueN ) ;
+	// returns the largest of zero or more numbers. 
+	// If no arguments are given, the results is –Infinity.
+	Math.max(10, 20, -1, 100); // 100
+	Math.max(-1, -3, -40); // -1
+	let ary = [2,6,100,200];
+	Math.max(...ary) // 200
+
+	// Math.min(value1, value2, ... valueN ) ;
+	// returns the smallest of zero or more numbers. 
+	// If no arguments are given, the results is –Infinity.
+	Math.min(10, 20, -1, 100); // -1
+	Math.min(-1, -3, -40); // -40
+	let ary = [2,6,100,200];
+	Math.min(...ary) // 2
+
+
+	// Math.pow(base, exponent ) ;
+	Math.pow(2,2) // 4
+	
+
+```
+
+
 
 ### type coercion
 JavaScript is a weakly-typed language, values can also be converted between different types automatically  on explicityly
@@ -134,7 +188,7 @@ if (height) {
 ```
 
 ###  Loops  
-	- For loop
+- For loop   
 ```
 		var ages = [10, 20, 30];
 
@@ -150,9 +204,29 @@ if (height) {
 			console.log(eachAge)
 		}
 ```
+This is nice but now you have to worry about indices. 
+
+- forEach()
+If you have an array.You use forEach by specifying a function that takes a parameter. Everytime your function is called its being called with each item in the array.
+This method only works for arrays
+
+```
+const newArr =  [ 12, 34, 56, 43 ]
+newArr.forEach( (item) => {
+  console.log(item)
+});
+// 12
+// 34
+// 56
+// 43
+```
+Because the forEach() methods run callback functions, you would use return to skip the current item. There is no way to break the loop completely.
+
+
 - for...in   
-	this is for Looping over objects and not arrays
+	Use a for…in loop to iterate over any object
 	// A for...in loop iterates over the properties of an object in an arbitrary order   
+	for…in loop over an object it will give you the value to each key in the object.
 	```
 	var finalValue = "";
 	var exampleObject = { a: 1, b: 2, c: 3 };
@@ -161,12 +235,73 @@ if (height) {
 		finalValue += exampleObject[property];
 	}
 	console.log(finalValue); // 123
-	// While loop
+	
+	```
+	For…in loops do not have a specific order for execution. Therefore you shouldn’t use it if you are expecting a specific order.
+	Ideal for looping over objects
+
+
+- for...of
+	for…of to iterate over the values in an iterable,
+	creates a loop iterating over iterable objects, including: built-in String, Array, array-like objects (e.g., arguments or NodeList), TypedArray, Map, Set, and user-defined iterables.
+
+	```
+		// array
+		const array1 = ['a', 'b', 'c'];
+
+		for (const element of array1) {
+			console.log(element);
+		}
+
+		// String
+		const iterable = 'boo';
+
+		for (const value of iterable) {
+			console.log(value);
+		}
+		//Map
+		const iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
+
+		for (const entry of iterable) {
+			console.log(entry);
+		}
+		// ['a', 1]
+		// ['b', 2]
+		// ['c', 3]
+
+		for (const [key, value] of iterable) {
+			console.log(value);
+		}
+		// 1
+		// 2
+		// 3
+
+		// set
+		const iterable = new Set([1, 1, 2, 2, 3, 3]);
+
+		for (const value of iterable) {
+			console.log(value);
+		}
+
+	```
+	In for...of loops, abrupt iteration termination can be caused by break, throw or return. In these cases, the iterator is closed.
+
+	```
+		for (const o of []) { 
+			console.log(o); 
+			break; // closes iterator, execution continues outside of the loop
+		}
+	```
+
+
+- while loop
+```
+// While loop
 	while (i < students.length) {
 		i++
 		console.log(i);
 	}
-	```
+```
 
 ### Arrays
 ``` 
