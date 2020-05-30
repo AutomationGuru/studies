@@ -120,8 +120,6 @@ the properties and methods of Math are static and can be called by using Math as
 
 ```
 
-
-
 ### type coercion
 JavaScript is a weakly-typed language, values can also be converted between different types automatically  on explicityly
 Two types of Coercion  
@@ -415,6 +413,7 @@ console.log( map.get('1') ); // 'str1'
 
 console.log( map.size ); // 3
 map.delete('1'); // deletes the element with key '1'
+
 // Iteration over Map
 map.keys() – returns an iterable for keys returns itrator
 // if the keys or values need to be of array
@@ -493,6 +492,100 @@ for (let elem of mySet) { console.log(elem)} // Will console log India as I!==i
 Map and Set‘s references to objects are strongly held and will not allow for garbage collection. This can get expensive if maps/sets reference large objects that are no longer needed, such as DOM elements that have already been removed from the DOM.
 
 To remedy this, ES6 also introduces two new weak collections called WeakMap and WeakSet. These ES6 collections are ‘weak’ because they allow for objects which are no longer needed to be cleared from memory.
+
+### Regex
+JavaScript RegExp class represents regular expressions, RegExp define methods that use regular expressions to perform powerful pattern-matching and search-and-replace functions on text.   
+
+```
+	var pattern = new RegExp(pattern, attributes);
+	or
+	var pattern = /pattern/attributes
+	// pattern: Pattern to match 
+	// Attributes : g,i, m - global/ignorecase/match multiple lines
+	// m - Specifies that if the string has newline or carriage return
+	// characters, the ^ and $ operators will now match against a 
+	// newline boundary, instead of a string boundary
+```
+* PATTERNS
+1.  Brackets: are used to find a range of characters.
+	```
+	// [...] - Any one characer 
+	[AEIOU] - matches one vowel in uppercase 
+	T[aeo]p - Match Tap/Tep/Top
+
+	// [ - ] - Any one character from the range
+	[0-9] - Any one digits between 0-9
+	[a-z] - Any one alphabet a-z
+	[A-Z] - Any one alphabet a-z
+	[a-Z] - Any one char for a-z, A-Z
+
+
+	// [^...] Not that one character
+	[^x] - once character that is not x
+
+	```
+2. Quantifiers   
+The frequency or position of bracketed character sequences and single characters can be denoted by a special character.The +, *, ?, and $ are used for that
+
+	```
+	// + One or more characters match
+	a+ : matchs character with a or aaa
+
+	// * : Zero or more instance
+	a* - match a with any characters
+
+	// ? : Once or none match
+	a? - Matchs one instance of a or none
+
+	// {n} : Exactly n times
+	a{3} matchs a exact 3 time matches
+	// {n,y} Match  n or y times
+	a{3,5} should match a 3 or 5 times
+
+	// $ match char/string ending with
+	a$ - string ending with a
+
+	// ^ match char/string begining with it
+	^a - string starting with a
+
+	// . match Any character except line break
+	a.b will match acb
+	.* will match anything
+
+	```
+
+3. Metacharacters : metacharacter is simply an alphabetical character preceded by a backslash that acts to give the combination a special meaning.
+	```
+	\s look for white space (includes tab/space/newline)
+	\S non-whitespace character
+	\d digits
+	\D non digits
+	\w match for words
+	\W non word characters
+	\t match for tab
+	```
+
+4.  Logical 
+	```
+		// | OR using to group characters
+		A(nt|pple) - will match Ant and Apple
+	```
+
+5. Grouping: 
+* parentheses () can be used for grouping, groups the character, p(hp)+ will look for p followed by one or more instance of hp
+* Square brackets [] define a character class [0-9]  or a[bc]d matches one of the character in the square braces
+* curly braces {} are used by a quantifier with specific limits.
+
+6. **ESCAPING a special characters**
+There are instances when we need to match regex patterns like * or .
+To make sure its not interpreted as regex we escpae to search for that specific character
+	```
+		a\.c - escape . and matches 'a.c'
+		\*\+\?\$\^ - matches string *+?$^
+		\/\\ - /\ is matched
+		\[\{\(\)\}\] is matched by [{()}]
+	```
+
 
 
 ### Functions - helps with DRY (Dont repeat yourself)
