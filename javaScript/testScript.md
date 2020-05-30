@@ -585,8 +585,18 @@ To make sure its not interpreted as regex we escpae to search for that specific 
 		\/\\ - /\ is matched
 		\[\{\(\)\}\] is matched by [{()}]
 	```
+Using regex example:
+- Create a regex object with the pattern to match
+- uses the methods supported to query the pattern against a string
 
+	```
+		let stringCompare = "JavaScript is a scriptic lang, you can script to experience this";
+		// look for script ignoring case across the string
+		let regExample = new RegExp('script', 'gi');
+		let matches = regExample.exec(stringCompare); // if string matches returns an array with the index of the first match, loop to find all matches and index
+		matches.index will return the first match
 
+	```
 
 ### Functions - helps with DRY (Dont repeat yourself)
  Function Declarations feel like they were intended to mimic Java style method declarations but Java methods are very different animals. In JavaScript functions are living objects with values. Java methods are just metadata storage to larger extent. 
