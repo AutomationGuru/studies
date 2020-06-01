@@ -1186,3 +1186,26 @@ allows to build the reusable componenets you can use through your webpage
   ##### Imperative vs Declarative programming 
   > I : Series of steps to achieve it, in JS to modify the tree, we get the element and add a class or remove it etc
   > D : Say what you want this, ex: html, provides i want the page and browser renders the page
+
+
+
+##### SOME EASY THINGS TO DO
+1. Intersection elements of two arrays
+array1.filter(value => array2.includes(value))
+2. Match regex on string with a variable value
+curString.match(new RegExp(`${char}`, 'g'))
+3. Matching values in string
+// MatchAll returns an iterator
+for(i of x.matchAll('a')){console.log(i.index)}
+
+Strings
+```
+	let x = 'abcdedddaa'
+	x.match(/d/g) //['d','d','d','d'] returns all matched values
+```
+4. Random number generator between range 1-10
+Math.floor(Math.random()* (10-1) + 1)
+Math.floor(Math.random()* (max-min) + min)
+
+5. filter multiple same elements of array y
+y.filter(elem => elem.includes('a'))
